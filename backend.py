@@ -31,7 +31,14 @@ logging.basicConfig(filename="debug_log.txt",
 )
 """
 load_dotenv()
-CORS(app)  # Enable CORS to allow requests from frontend
+CORS(app, resources={r"/api/*": {
+    "origins": [
+        "https://sajjadalinoor.vercel.app",  # Your frontend domain
+        "http://localhost:3000"  # Allow local testing
+    ],
+    "methods": ["GET", "POST", "PUT", "DELETE"],
+    "allow_headers": ["Content-Type", "Authorization"]
+}})
 
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
