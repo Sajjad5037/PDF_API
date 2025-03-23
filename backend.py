@@ -541,7 +541,7 @@ def get_pdf_files():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.route("/upload", methods=["POST"])
+@app.route("/api/upload", methods=["POST"])
 def upload_files():
     if "pdfs" not in request.files:
         return jsonify({"message": "No file part in the request"}), 400
